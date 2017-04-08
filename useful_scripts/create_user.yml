@@ -1,6 +1,6 @@
 ---
 # Example of usage:
-# ansible-playbook -i inventory_file create_user.yml -e "server=CM8-DEV-EXAMPLE01 user_name=alex public_key_file=/path/to/dir/id_rsa.pub add_sudo=yes"
+# ansible-playbook -i inventory_file create_user.yml -e "server=server01 user_name=alex public_key_file=/path/to/dir/id_rsa.pub add_sudo=yes"
 
 - hosts: "{{ server }}"
   become: true
