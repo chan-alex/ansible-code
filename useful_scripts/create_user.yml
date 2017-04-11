@@ -1,13 +1,35 @@
 ---
 # Example of usage:
-# ansible-playbook -i inventory_file create_user.yml -e "server=server01 user_name=alex public_key_file=/path/to/dir/id_rsa.pub add_sudo=yes"
+#   ansible-playbook -i inventory_file create_user.yml -e "server=server01 user_name=alex public_key_file=/path/to/dir/id_rsa.pub add_sudo=yes"
+# or
+#    ansible-playbook -i inventory_file create_user.yml   (and just reply to the prompts)
+#
+# or a bit mix of both.
 
 - hosts: "{{ server }}"
   become: true
   become_method: sudo
 
-  vars:
-    add_sudo: no
+
+  vars_prompt:
+  
+     - name: "server"
+       prompt: "Enter server (or group)"
+       private: no
+
+     - name: "user_name"
+       prompt: "Enter user name"
+       private: no
+
+     - name: "public_key_file"
+       prompt: "Enter public key file path"
+       private: no
+
+     - name: "add_sudo"
+       prompt: "Add to sudoers? "
+       private: no
+       default: no
+
 
   tasks:
     - name: create user group with same name with user anem
