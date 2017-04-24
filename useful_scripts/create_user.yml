@@ -22,11 +22,11 @@
        private: no
 
      - name: "public_key_file"
-       prompt: "Enter public key file path"
+       prompt: "Enter public key file path (absolute, not relative)"
        private: no
 
      - name: "add_sudo"
-       prompt: "Add to sudoers? "
+       prompt: "Add to sudoers? (Enter 'yes' if want to) "
        private: no
        default: no
 
